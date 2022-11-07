@@ -1,0 +1,51 @@
+﻿@model ShopMVC.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div class="container">
+    <div class="product">
+        <div class="product__img-container">
+            <img src=@Html.DisplayFor(model => model.ImageSrc) />
+        </div>
+        <div class="product__info">
+            <h3>@Html.DisplayFor(model => model.Name)</h3>
+            <p>@Html.DisplayFor(model => model.ProductCategory.Name)</p>
+            <p>$@Html.DisplayFor(model => model.Price)</p>
+            <p>@Html.DisplayFor(model => model.Description)</p>
+            <p>Rating: @Html.DisplayFor(model => model.Rating)</p>
+            <div class="product__actions">
+                <button>@Html.ActionLink("Back to List", "Index")</button>
+                <button>@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) </button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <style>
+        .product {
+            margin-top: 40px;
+            display: flex;
+        }
+
+        .product__img-container {
+            width: 60%;
+            height: 400px;
+        }
+
+        .product img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .product__info {
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
